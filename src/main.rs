@@ -141,7 +141,7 @@ async fn main(spawner: Spawner) {
         p.PIN_10,
     );
 
-    spawner.spawn(run_rtc_task(spi)).unwrap();
+    spawner.spawn(run_rtc_and_persistence_task(spi)).unwrap();
 
     // the main app state machine. Maybe should be in main loop?
     // spawner.spawn(run_app_state_task()).unwrap();
@@ -214,7 +214,7 @@ async fn main(spawner: Spawner) {
 
 
 #[embassy_executor::task]
-async fn run_rtc_task(
+async fn run_rtc_and_persistence_task(
     spi: PioSpiDs1302<
         'static,
         embassy_rp::peripherals::PIN_12,
@@ -236,6 +236,9 @@ async fn run_rtc_task(
     let turns_h = rtc.read_ram(0).await as u16;
     let mut turns_per_day = (turns_h << 8) + rtc.read_ram(1).await as u16;
     if turns_per_day == 0 {turns_per_day = 600 };
+    let x = turns_per_day - (turns_per_day/100) * 100;
+    if x != 0 && x != 50 {turns_per_day -= x;}
+
     let mut m = rtc.read_ram(2).await;
     if m > 2{m = 2};
     let mode = TurningMode::from_u8(m);
@@ -1057,7 +1060,8 @@ impl AppStateHandler {
                         self.state = MenuState::SettingTurnsPerDay(turns + 50);
                     }
                     Key::Down => {
-                        self.state = MenuState::SettingTurnsPerDay(turns - 50);
+                        let t = if turns - 50 < 50 { 50 } else {turns - 50};
+                        self.state = MenuState::SettingTurnsPerDay(t);
                     }
                     Key::Enter => {
                         self.state = MenuState::Menu(0);
