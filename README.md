@@ -7,7 +7,7 @@ So the analyzers input impedance or something helps the circuit. I have not had 
 BOM
 - Rapberry Pi Pico
 - [RTC ds1302 board](https://www.az-delivery.de/en/products/rtc-modul?_pos=2&_psq=RTC&_ss=e&_v=1.0)
-- [Oled Screen 128x64, ssd1306](https://www.az-delivery.de/en/products/1-3zoll-i2c-oled-display?_pos=1&_psq=oled&_ss=e&_v=1.0&variant=6571890704411 )
+- [Oled Screen 128x64, ssd1306](https://www.az-delivery.de/en/products/0-96zolldisplay)
 - [Stepper motor 28BYJ-48]( https://www.mouser.com/datasheet/2/758/stepd-01-data-sheet-1143075.pdf )
 - [Motor driver board ULN2003](https://www.hadex.cz/spec/m513.pdf )
 - 4 button switches
