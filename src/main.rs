@@ -457,7 +457,7 @@ async fn run_show_menu_task(
     >,
 ) {
     // Display a splash screen
-    let splash = include_bytes!("../splash1.bmp");
+    let splash = include_bytes!("../WWlogo.bmp");
     let img = Bmp::from_slice(splash).unwrap();
     display.init().unwrap();
     let text_style = MonoTextStyleBuilder::new()
