@@ -1,7 +1,7 @@
 # Örgryte Watch Winder
 This is a hobby project. Building a Watch winder controlled by a Raspberry pi Pico.
 
-The RTC PIO program works when I hawe a cheap logic analyzer (https://www.az-delivery.de/en/products/saleae-logic-analyzer?_pos=1&_psq=logic&_ss=e&_v=1.0)  connected. Bot behaves strange when disconnected.
+The RTC PIO program works when I have a cheap logic analyzer (https://www.az-delivery.de/en/products/saleae-logic-analyzer?_pos=1&_psq=logic&_ss=e&_v=1.0)  connected. But behaves strange when disconnected.
 So the analyzers input impedance or something helps the circuit. I have not had time to look into that yet. (And software is my domain...)
 
 Circuit 
