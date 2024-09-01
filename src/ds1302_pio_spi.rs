@@ -15,22 +15,11 @@ pub struct PioSpiDs1302<'d, CS: Pin, PIO: Instance, const SM: usize> {
     wrap_target: u8,
 }
 
-impl<'d, CS, PIO, const SM: usize> PioSpiDs1302<'d, CS, PIO, SM>
-where
-    CS: Pin,
-    PIO: Instance,
+impl<'d, CS, PIO, const SM: usize> PioSpiDs1302<'d, CS, PIO, SM> where CS: Pin, PIO: Instance,
 {
-    pub fn new<DIO, CLK>(
-        common: &mut Common<'d, PIO>,
-        mut sm: StateMachine<'d, PIO, SM>,
-        irq: Irq<'d, PIO, 0>,
-        cs: Output<'d, CS>,
-        dio: DIO,
-        clk: CLK,
-    ) -> Self
-    where
-        DIO: PioPin,
-        CLK: PioPin,
+    pub fn new<DIO, CLK>( common: &mut Common<'d, PIO>, mut sm: StateMachine<'d, PIO, SM>, irq: Irq<'d, PIO, 0>
+        cs: Output<'d, CS>, dio: DIO, clk: CLK, ) -> Self
+    where DIO: PioPin, CLK: PioPin,
     {
         let program = pio_asm!(
             ".side_set 1" // this is the CLK

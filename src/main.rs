@@ -111,7 +111,7 @@ async fn main(spawner: Spawner) {
         ))
         .unwrap();
 
-    // Show menu task, sends multiple lines to displaytask deppending on app state. No peripherals
+    // Show menu task,
     spawner.spawn(run_show_menu_task(display)).unwrap();
 
   
